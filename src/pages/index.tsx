@@ -5,7 +5,6 @@ import Link from "next/link";
 import { api } from "../utils/api";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
     <>
@@ -14,6 +13,7 @@ const Home: NextPage = () => {
         <meta name="description" content="A visual social graph of the Farcaster network" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <main className="
         flex flex-col min-h-screen
         items-center
@@ -58,7 +58,37 @@ const Home: NextPage = () => {
           </form>
         </article>
 
+        <footer className="
+          text-xs mt-14 mb-1
+          flex flex-col
+          self-center justify-self-end text-center
+          lg:w-8/12 md:w-9/12 sm:w-10/12 w-11/12 max-w-none
+        ">
+          <hr className="border border-solid border-gray-800 mb-5" />
+          <section className="
+            flex flex-row justify-center gap-2
+            text-sm mb-5
+          ">
+            {[
+              ["Twitter", "https://twitter.com/_yashkarthik"],
+              ["Github", "https://github.com/yashkarthik/farcaster-graph"],
+              ["Farcaster", "https://www.discove.xyz/@yashkarthik?q=%28from%3Ayashkarthik%29&username=yashkarthik"],
+            ].map((linkObj) => (
+              <div className="flex flex-row gap-2">
+                <a href={linkObj[1]}
+                  target="_blank"
+                  className="
+                  underline underline-offset-2 decoration-2 decoration-dotted
+                  decoration-zinc-400 dark:decoration-zinc-500
+                  hover:decoration-indigo-400
+                ">{linkObj[0]}</a>
+                <p className="text-gray-600">//</p>
+              </div>
+            ))}
+          </section>
+        </footer>
       </main>
+
     </>
   );
 };
